@@ -1,7 +1,13 @@
 import pygame
+from grid import Grid
+
 pygame.init()
 
-screen = pygame.display.set_mode((600, 600))
+WIDTH, HEIGHT = 600, 600
+CELL_SIZE = 20
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+grid = Grid(WIDTH // CELL_SIZE, HEIGHT // CELL_SIZE, CELL_SIZE)
 
 running = True
 while running:
@@ -9,7 +15,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill((255, 255, 255))  # clear screen
-    pygame.display.flip()         # update screen
+        # Mouse clicks
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pos = pygame.mouse.get_pos()
+            grid.handle_click(pos, event.button)
+
+    screen.fill((255, 255, 255))
+    grid.draw(screen)
+    pygame.display.flip()
 
 pygame.quit()
