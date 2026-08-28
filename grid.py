@@ -1,4 +1,5 @@
 import pygame
+from algorithms.BFS import bfs
 
 class Grid:
     def __init__(self, rows, cols, cell_size):
@@ -21,6 +22,10 @@ class Grid:
             return (0, 255, 0)      # start
         if value == 3:
             return (255, 0, 0)      # end
+        if value == 4:
+            return (0, 0, 255)      # visited (blue)
+        if value == 5:
+            return (0, 255, 255)    # final path (cyan)
 
     def draw(self, screen):
         for r in range(self.rows):
@@ -58,3 +63,10 @@ class Grid:
                 self.cells[old_r][old_c] = 0
             self.end = (r, c)
             self.cells[r][c] = 3
+
+
+
+    ##################
+
+    def run_bfs(self):
+        bfs(self)
