@@ -27,6 +27,12 @@ while running:
             if event.key == pygame.K_b:
                 grid.run_bfs()
 
+        #click d to run bfs
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_d:
+                grid.run_dfs()
+
+
 
     screen.fill((255, 255, 255))
     grid.draw(screen)
