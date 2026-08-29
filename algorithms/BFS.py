@@ -10,7 +10,7 @@ def bfs(grid):
 
 
     while queue:
-        r,c = queue.pop(0)
+        r,c = queue.pop(0) #FIFO
 
         if grid.cells[r][c] != 2 and grid.cells[r][c] != 3: #mark cell as visited as long as its not start or end
             grid.cells[r][c] = 4
@@ -20,12 +20,12 @@ def bfs(grid):
         pygame.display.flip()
         pygame.time.delay(10)
 
+        #reconstruct the fastest path at the end
         if (r,c) == end:
-            #reconstruct path
             current = end
             while current != start:
                 r2, c2 = current
-                if grid.cells[r2][c2] not in (2, 3):   #don't overwrite start/end
+                if grid.cells[r2][c2] != 2 and grid.cells[r2][c2] != 3: #don't overwrite start/end
                     grid.cells[r2][c2] = 5 #final path colour
                 current = came_from[current]
 
@@ -35,7 +35,7 @@ def bfs(grid):
                 pygame.time.delay(20)
             return
 
-        neighbours = [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]
+        neighbours = [(r+1,c), (r-1,c), (r,c+1), (r,c-1)]
         for neighbour in neighbours:
             row = neighbour[0]
             col = neighbour[1]

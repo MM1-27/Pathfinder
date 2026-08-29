@@ -26,11 +26,11 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_b:
                 grid.run_bfs()
-
-        #click d to run bfs
-        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 grid.run_dfs()
+            if event.key == pygame.K_k:   # Dijkstra = K (like "Kijkstra")
+                grid.run_dijkstra()
+
 
 
 

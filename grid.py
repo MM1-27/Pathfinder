@@ -1,6 +1,7 @@
 import pygame
 from algorithms.BFS import bfs
 from algorithms.DFS import dfs
+from algorithms.dijkstra import dijkstra
 
 class Grid:
     def __init__(self, rows, cols, cell_size):
@@ -75,3 +76,7 @@ class Grid:
 
     def run_dfs(self):
         dfs(self)
+
+
+    def run_dijkstra(self):
+        dijkstra(self)
