@@ -30,7 +30,8 @@ while running:
                 grid.run_dfs()
             if event.key == pygame.K_k:   # Dijkstra = K (like "Kijkstra")
                 grid.run_dijkstra()
-
+            if event.key == pygame.K_a:
+                grid.run_astar()
 
 
 

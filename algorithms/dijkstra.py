@@ -55,9 +55,9 @@ def dijkstra(grid):
                     new_dist = distances[(r, c)] + 1
 
                     # If this path is better, update it
-                    if (row,col) not in distances or new_dist < distances[(row, col)]:
-                        distances[(row, col)] = new_dist
-                        came_from[(row, col)] = (r, c)
+                    if (row,col) not in distances or new_dist < distances[(row,col)]:
+                        distances[(row,col)] = new_dist
+                        came_from[(row,col)] = (r, c)
 
-                        if (row, col) not in visited:
-                            unvisited.append((row, col))
+                        if (row,col) not in visited and (row, col) not in unvisited:
+                            unvisited.append((row,col))
